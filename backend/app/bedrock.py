@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import boto3
 import logging
 import os
 from typing import TYPE_CHECKING, Any, Dict, Optional, Tuple, TypeGuard
@@ -40,6 +41,7 @@ BEDROCK_REGION = os.environ.get("BEDROCK_REGION", "us-east-1")
 ENABLE_BEDROCK_CROSS_REGION_INFERENCE = (
     os.environ.get("ENABLE_BEDROCK_CROSS_REGION_INFERENCE", "false") == "true"
 )
+SAGEMAKER_ENDPOINT_NAME = os.environ.get("SAGEMAKER_ENDPOINT_NAME", "")
 
 client = get_bedrock_runtime_client()
 
@@ -491,6 +493,17 @@ def compose_args_for_converse_api(
         }
 
     return args
+
+
+def call_sagemaker_api(payload: dict) -> dict:
+    client = boto3.client("sagemaker-runtime")
+    response = client.invoke_endpoint(
+        EndpointName=SAGEMAKER_ENDPOINT_NAME,
+        ContentType="application/json",
+        Body=json.dumps(payload),
+    )
+    result = json.loads(response["Body"].read())
+    return result
 
 
 @retry(

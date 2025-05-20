@@ -320,5 +320,12 @@ export class BedrockChatStack extends cdk.Stack {
       value: largeMessageBucket.bucketName,
       exportName: `${props.envPrefix}${sepHyphen}BedrockClaudeChatLargeMessageBucketName`,
     });
+
+    backendApi.handler.addToRolePolicy(
+      new iam.PolicyStatement({
+        actions: ["sagemaker:InvokeEndpoint"],
+        resources: ["*"], // Or restrict to your endpoint ARN
+      })
+    );
   }
 }

@@ -25,6 +25,7 @@ PUBLISH_API_CODEBUILD_PROJECT_NAME = os.environ.get(
     "PUBLISH_API_CODEBUILD_PROJECT_NAME", ""
 )
 USER_POOL_ID = os.environ.get("USER_POOL_ID", "")
+SAGEMAKER_ENDPOINT_NAME = os.environ.get("SAGEMAKER_ENDPOINT_NAME", "")
 
 
 def snake_to_camel(snake_str):
@@ -312,3 +313,7 @@ def delete_api_key_from_secret_manager(user_id: str, bot_id: str, prefix: str) -
     except ClientError as e:
         logger.error(f"Error accessing Secrets Manager: {e}")
         raise
+
+
+def get_sagemaker_runtime_client():
+    return boto3.client("sagemaker-runtime")

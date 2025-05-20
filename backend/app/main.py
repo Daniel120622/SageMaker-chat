@@ -27,8 +27,11 @@ from starlette.requests import Request
 from starlette.responses import Response
 from starlette.types import ASGIApp, Message
 
+from app.routes import model
+
 CORS_ALLOW_ORIGINS = os.environ.get("CORS_ALLOW_ORIGINS", "*")
 PUBLISHED_API_ID = os.environ.get("PUBLISHED_API_ID", None)
+SAGEMAKER_ENDPOINT_NAME = os.environ.get("SAGEMAKER_ENDPOINT_NAME", "")
 
 is_published_api = PUBLISHED_API_ID is not None
 
@@ -66,6 +69,7 @@ if not is_published_api:
 else:
     app.include_router(published_api_router)
 
+app.include_router(model.router)
 
 app.add_middleware(
     CORSMiddleware,

@@ -1,10 +1,14 @@
 # Backend API
 
-Written in Python with [FastAPI](https://fastapi.tiangolo.com/).
+Now uses Amazon SageMaker for model inference.
 
 ## Getting started
 
-- To get started, we need to deploy resources to create DynamoDB / Bedrock resource. To deploy, please see [Deploy using CDK](../README.md#deploy-using-cdk).
+- Set the following environment variable:
+  ```
+  export SAGEMAKER_ENDPOINT_NAME=your-sagemaker-endpoint-name
+  ```
+- Remove or ignore Bedrock-related environment variables.
 - Create [poetry](https://python-poetry.org/) environment on your local machine
 
 ```sh
