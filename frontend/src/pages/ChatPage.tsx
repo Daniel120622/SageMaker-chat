@@ -6,50 +6,50 @@ import React, {
   useState,
   useRef,
 } from 'react';
-import InputChatContent from '../components/InputChatContent';
-import useChat from '../hooks/useChat';
-import { AttachmentType } from '../hooks/useChat';
-import ChatMessage from '../components/ChatMessage';
-import useScroll from '../hooks/useScroll';
+import InputChatContent from '../components/InputChatContent.tsx';
+import useChat from '../hooks/useChat.ts';
+import { AttachmentType } from '../hooks/useChat.ts';
+import ChatMessage from '../components/ChatMessage.tsx';
+import useScroll from '../hooks/useScroll.ts';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   PiArrowsCounterClockwise,
   PiPenNib,
   PiWarningCircleFill,
 } from 'react-icons/pi';
-import Button from '../components/Button';
+import Button from '../components/Button.tsx';
 import { useTranslation } from 'react-i18next';
-import SwitchBedrockModel from '../components/SwitchBedrockModel';
-import useSnackbar from '../hooks/useSnackbar';
-import useBot from '../hooks/useBot';
-import useConversation from '../hooks/useConversation';
+import SwitchBedrockModel from '../components/SwitchBedrockModel.tsx';
+import useSnackbar from '../hooks/useSnackbar.ts';
+import useBot from '../hooks/useBot.ts';
+import useConversation from '../hooks/useConversation.ts';
 import { ActiveModels, BotSummary } from '../@types/bot';
 import IconPinnedBot from '../components/IconPinnedBot.tsx';
 
-import { copyBotUrl, isPinnedBot, canBePinned } from '../utils/BotUtils';
-import { toCamelCase } from '../utils/StringUtils';
+import { copyBotUrl, isPinnedBot, canBePinned } from '../utils/BotUtils.ts';
+import { toCamelCase } from '../utils/StringUtils.ts';
 import { produce } from 'immer';
-import StatusSyncBot from '../components/StatusSyncBot';
-import Alert from '../components/Alert';
-import useBotSummary from '../hooks/useBotSummary';
-import useModel from '../hooks/useModel';
+import StatusSyncBot from '../components/StatusSyncBot.tsx';
+import Alert from '../components/Alert.tsx';
+import useBotSummary from '../hooks/useBotSummary.ts';
+import useModel from '../hooks/useModel.ts';
 import {
   AgentState,
   AgentToolsProps,
-} from '../features/agent/xstates/agentThink';
-import { getRelatedDocumentsOfToolUse } from '../features/agent/utils/AgentUtils';
-import { SyncStatus } from '../constants';
-import { BottomHelper } from '../features/helper/components/BottomHelper';
-import { useIsWindows } from '../hooks/useIsWindows';
+} from '../features/agent/xstates/agentThink.ts';
+import { getRelatedDocumentsOfToolUse } from '../features/agent/utils/AgentUtils.ts';
+import { SyncStatus } from '../constants/index.ts';
+import { BottomHelper } from '../features/helper/components/BottomHelper.tsx';
+import { useIsWindows } from '../hooks/useIsWindows.ts';
 import {
   DisplayMessageContent,
   Model,
   PutFeedbackRequest,
-} from '../@types/conversation.ts';
+} from '../@types/conversation';
 import { AVAILABLE_MODEL_KEYS } from '../constants/index';
 import usePostMessageStreaming from '../hooks/usePostMessageStreaming.ts';
-import useLoginUser from '../hooks/useLoginUser';
-import useBotPinning from '../hooks/useBotPinning';
+import useLoginUser from '../hooks/useLoginUser.ts';
+import useBotPinning from '../hooks/useBotPinning.ts';
 import Skeleton from '../components/Skeleton.tsx';
 import { twMerge } from 'tailwind-merge';
 import ButtonStar from '../components/ButtonStar.tsx';

@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import InputText from './InputText';
 import { Slider } from './Slider';
-import Help from '../components/Help';
+import Help from './Help';
 import { EDGE_GENERATION_PARAMS } from '../constants';
 
 const generationConfigParam = EDGE_GENERATION_PARAMS;

@@ -31,13 +31,13 @@ import useErrorMessage from '../../../hooks/useErrorMessage';
 import Help from '../../../components/Help';
 import Toggle from '../../../components/Toggle';
 import RadioButton from '../../../components/RadioButton';
-import { useAgent } from '../../../features/agent/hooks/useAgent';
-import { AgentTool } from '../../../features/agent/types';
+import { useAgent } from '../../agent/hooks/useAgent';
+import { AgentTool } from '../../agent/types';
 import {
   isInternetTool,
   isBedrockAgentTool,
-} from '../../../features/agent/utils/typeGuards';
-import { AvailableTools } from '../../../features/agent/components/AvailableTools';
+} from '../../agent/utils/typeGuards';
+import { AvailableTools } from '../../agent/components/AvailableTools';
 import {
   DEFAULT_FIXED_CHUNK_PARAMS,
   DEFAULT_HIERARCHICAL_CHUNK_PARAMS,
